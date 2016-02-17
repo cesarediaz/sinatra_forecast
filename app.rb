@@ -6,6 +6,7 @@ require 'sinatra/support/htmlhelpers'
 require 'yaml'
 require 'open_weather'
 
+set :title, 'Forecast Weather'
 set :config, YAML::load_file(File.join(__dir__, 'config', 'config.yml'))
 set :root, File.dirname(__FILE__)
 set :views, settings.root + '/views'
