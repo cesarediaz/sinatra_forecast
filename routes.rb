@@ -3,5 +3,7 @@ get '/' do
 end
 
 get '/forecast' do
-  haml :"forecast"
+  @country = params['country']
+  @city = params['city']
+  haml :"forecast", locals: {country: @country, city: @city}
 end
