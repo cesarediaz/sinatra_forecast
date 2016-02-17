@@ -1,0 +1,15 @@
+%div Search your city
+
+
+%form(action='forecast' method='get' class='form-inline')
+  %div.form-group
+    %label Country name
+    %select(name='country')= select_options(country_choices)
+    =# country_select('country', 'name', priority_countries: ['GB', 'FR', 'DE'], class: 'form-control')
+
+  %div.form-group
+    %label City
+    %input.form-control(type='text' name='city')
+
+  %div
+    %submit.btn.btn-default Send
