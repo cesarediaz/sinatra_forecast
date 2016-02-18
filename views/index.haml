@@ -1,7 +1,5 @@
-%div Search your city
-
-
-%form(action='forecast' method='get' class='form-inline')
+%h1 Search your city
+%form(action='forecast' method='get' class='form-group')
   %div.form-group
     %label Country name
     %select(name='country')= select_options(country_choices)
