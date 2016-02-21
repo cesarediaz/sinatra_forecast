@@ -2,8 +2,9 @@
 %form(action='forecast' method='get' class='form-group')
   %div.form-group
     %label Country name
-    %select(name='country')= select_options(country_choices)
-    =# country_select('country', 'name', priority_countries: ['GB', 'FR', 'DE'], class: 'form-control')
+    %select(name='country')
+      - COUNTRIES.each do |code, name|
+        %option(value="#{code}")= "#{name}"
 
   %div.form-group
     %label City
