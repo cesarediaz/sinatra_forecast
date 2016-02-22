@@ -1,14 +1,14 @@
 %h1 Search your city
 %form(action='forecast' method='get' class='form-group')
-  %div.form-group
+  %div.form-group.col-sm-5
     %label Country name
     %select.form-control(name='country')
       - COUNTRIES.each do |code, name|
         %option(value="#{code}")= "#{name}"
 
-  %div.form-group
+  %div.form-group.col-sm-5
     %label City
     %input.form-control(type='text' name='city')
 
-  %div
+  %div.col-sm-10
     %button.btn.btn-default(type='submit') Send
