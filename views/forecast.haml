@@ -1,7 +1,8 @@
-%a(href='/') Back to Main Page
+%b= "Forecast #{city}"
 
-%div Forecast
-%b= city
+%a.pull-right(href='/') Back to Main Page
+%hr
+
 - city_weather['list'].each do |city|
   %div.row.pull-left.panel.panel-primary
     %div.col-md-12.portfolio-item

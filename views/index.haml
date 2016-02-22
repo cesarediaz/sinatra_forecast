@@ -2,7 +2,7 @@
 %form(action='forecast' method='get' class='form-group')
   %div.form-group
     %label Country name
-    %select(name='country')
+    %select.form-control(name='country')
       - COUNTRIES.each do |code, name|
         %option(value="#{code}")= "#{name}"
 
