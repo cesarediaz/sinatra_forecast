@@ -1,0 +1,34 @@
+%a.pull-right(href='/') Back to Main Page
+.row
+  .col-lg-12
+    %h1.page-header
+      City #{@weather.body['city']['name']}
+      %small= @weather.body['city']['country']
+.row.pull-left.panel.panel-primary
+  .col-md-12.portfolio-item
+    - @weather.body['list'].each do |value|
+      - if value['dt'].to_s == @date.to_s
+        Rain
+        \#{value['weather'][0]['rain']} :
+        \#{value['weather'][0]['description']}
+        %br/
+        Temperature
+        Average
+        \#{value['main']['temp']}
+        Min
+        \#{value['main']['temp_min']}
+        Max
+        \#{value['main']['temp_max']}
+        %br/
+        Pressure
+        \#{value['main']['pressure']}
+        %br/
+        Humidity
+        \#{value['main']['humidity']}
+        %br/
+        Speed
+        \#{value['wind']['speed']}
+        %br/
+        Sys
+        \#{value['sys']['sunrise']}#{value['sys']['sunset']}
+      %br/
