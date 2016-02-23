@@ -6,4 +6,7 @@ gem 'sinatra'
 gem 'haml'
 gem 'open-weather'
 gem 'sinatra-activerecord'
-gem 'sqlite3'
+gem 'pg'
+group :development, :test do
+  gem 'sqlite3'
+end

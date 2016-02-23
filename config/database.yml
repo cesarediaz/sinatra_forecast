@@ -1,16 +1,17 @@
-default: &default
+development:
   adapter: sqlite3
+  database: db/forecast_development.sqlite3
   pool: 5
   timeout: 5000
 
-development:
-  <<: *default
-  database: db/forecast_development.sqlite3
-
 test:
-  <<: *default
+  adapter: sqlite3
   database: db/forecast_test.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
-  <<: *default
-  database: db/forecast_production.sqlite3
+  adapter: postgresql
+  database: forecast_production.sqlite3
+  pool: 5
+  timeout: 5000
