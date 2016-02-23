@@ -4,6 +4,8 @@ require './routes/routes'
 require 'yaml'
 require 'open_weather'
 require './config/countries'
+require 'sinatra/activerecord'
+require './models/city.rb'
 
 set :title, 'Forecast Weather'
 set :config, YAML::load_file(File.join(__dir__, 'config', 'config.yml'))
