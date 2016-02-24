@@ -7,6 +7,8 @@ gem 'haml'
 gem 'open-weather'
 gem 'sinatra-activerecord'
 gem 'pg'
+gem 'geocoder'
+
 group :development, :test do
   gem 'sqlite3'
 end

@@ -1,5 +1,12 @@
 get '/' do
-  haml :"index"
+  unless request.location.nil?
+    @city_weather = OpenWeather::Forecast.city("#{request.location.data['city']}, #{request.location.data['country_name']}", settings.open_weather_options)
+    @city = request.location.data['country_name']
+  else
+    @city_weather = {}
+    @city = ''
+  end
+  haml :"index", locals: {city: @city, city_weather: @city_weather}
 end
 
 get '/forecast' do
@@ -7,7 +14,7 @@ get '/forecast' do
   @city = params['city']
   @city_weather = OpenWeather::Forecast.city("#{params['city']}, #{params['country']['name']}", settings.open_weather_options)
   City.save(@city_weather)
-  haml :"forecast", locals: {country: @country, city: @city, city_weather: @city_weather }
+  haml :"forecast", locals: {country: @country, city: @city, city_weather: @city_weather}
 end
 
 get '/widget/:id/:date' do

@@ -6,6 +6,7 @@ require 'open_weather'
 require './config/countries'
 require 'sinatra/activerecord'
 require './models/city.rb'
+require 'geocoder'
 
 set :title, 'Forecast Weather'
 set :root, File.dirname(__FILE__)
