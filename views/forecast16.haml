@@ -1,0 +1,23 @@
+- unless @city == ''
+  .row
+    .col-sm-12
+      %h1= "#{@city}"
+      - unless @city_weather == {}
+        .row.pull-left
+          - @city_weather['list'].each do |city|
+            .col-md-3
+              Time
+              = Time.at(city['dt'])
+              |
+              %a(href="widget/#{city_weather['city']['id']}/#{city['dt']}") Details
+              %img(src="http://openweathermap.org/img/w/#{city['weather'][0]['icon']}.png")
+              %br
+              Min
+              = city['main']['temp_min']
+              Max
+              = city['main']['temp_max']
+              Humidity
+              = city['main']['humidity']
+              %br
+              = city['weather'][0]['main']
+              = city['weather'][0]['description']

@@ -1,12 +1,13 @@
 get '/' do
   unless request.location.nil?
     @city_weather = OpenWeather::Forecast.city("#{request.location.data['city']}, #{request.location.data['country_name']}", settings.open_weather_options)
-    @city = request.location.data['country_name']
+    @city = request.location.data['city']
+    @country = request.location.data['country_name']
   else
     @city_weather = {}
     @city = ''
   end
-  haml :"index", locals: {city: @city, city_weather: @city_weather}
+  haml :"index", locals: {country: @country, city: @city, city_weather: @city_weather}
 end
 
 get '/forecast' do

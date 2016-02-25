@@ -14,30 +14,5 @@
   %div.col-sm-10
     %button.btn.btn-default(type='submit') Send
 
-= request.location.inspect
-
-- unless @city == ''
-  %b= "Forecast for your city #{@city}"
-
-  %a.pull-right(href='/') Back to Main Page
-  %hr
-
-  - unless @city_weather == {}
-    - @city_weather['list'].each do |city|
-      %div.row.pull-left.panel.panel-primary
-        %div.col-md-12.portfolio-item
-          Time
-          = Time.at(city['dt'])
-          |
-          %a(href="widget/#{city_weather['city']['id']}/#{city['dt']}") Details
-          %img(src="http://openweathermap.org/img/w/#{city['weather'][0]['icon']}.png")
-          %br
-          Min
-          = city['main']['temp_min']
-          Max
-          = city['main']['temp_max']
-          Humidity
-          = city['main']['humidity']
-          %br
-          = city['weather'][0]['main']
-          = city['weather'][0]['description']
+%br
+= haml :forecast16, locals: {city: @city, city_weather: @city_weather}
