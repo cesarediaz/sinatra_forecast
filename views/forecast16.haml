@@ -1,23 +1,25 @@
 - unless @city == ''
   .row
     .col-sm-12
-      %h1= "#{@city}"
+      .page-header
+        %h1.text-capitalize!= "#{@city}, <small>#{@country}</small>"
       - unless @city_weather == {}
         .row.pull-left
           - @city_weather['list'].each do |city|
-            .col-md-3
-              Time
-              = Time.at(city['dt'])
-              |
-              %a(href="widget/#{city_weather['city']['id']}/#{city['dt']}") Details
-              %img(src="http://openweathermap.org/img/w/#{city['weather'][0]['icon']}.png")
+            .col-md-3.panel.panel-default
+              %span.pull-right= Time.at(city['dt']).strftime("%m/%d/%Y at %I:%M%p")
+              %img.pull-left(src="http://openweathermap.org/img/w/#{city['weather'][0]['icon']}.png")
+              %hr
               %br
               Min
               = city['main']['temp_min']
+              %br
               Max
               = city['main']['temp_max']
+              %br
               Humidity
               = city['main']['humidity']
               %br
               = city['weather'][0]['main']
               = city['weather'][0]['description']
+              %a.pull-right(href="widget/#{city_weather['city']['id']}/#{city['dt']}") Details
