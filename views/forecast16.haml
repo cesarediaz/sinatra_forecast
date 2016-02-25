@@ -7,19 +7,11 @@
         .row.pull-left
           - @city_weather['list'].each do |city|
             .col-md-3.panel.panel-default
-              %span.pull-right= Time.at(city['dt']).strftime("%m/%d/%Y at %I:%M%p")
+              %h4.pull-right= Time.at(city['dt']).strftime("%m/%d/%Y at %I:%M%p")
               %img.pull-left(src="http://openweathermap.org/img/w/#{city['weather'][0]['icon']}.png")
               %hr
               %br
-              Min
-              = city['main']['temp_min']
-              %br
-              Max
-              = city['main']['temp_max']
-              %br
-              Humidity
-              = city['main']['humidity']
-              %br
-              = city['weather'][0]['main']
-              = city['weather'][0]['description']
+              %h3= "<small>Min</small> #{city['main']['temp_min']} <small>Max</small> #{city['main']['temp_max']}"
+              %h3= "<small>Humidity</small> #{city['main']['humidity']}"
+              %h3= "#{city['weather'][0]['main']} <small>#{city['weather'][0]['description']}</small>"
               %a.pull-right(href="widget/#{city_weather['city']['id']}/#{city['dt']}") Details
