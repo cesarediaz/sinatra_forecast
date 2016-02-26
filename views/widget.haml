@@ -1,3 +1,7 @@
+%form(action='/forecast' method='post' class='form-group')
+  %input(type='hidden' name='city' value="#{@weather.body['city']['name']}")
+  %input(type='hidden' name='country' value="#{@weather.body['city']['country']}")
+  %button.btn.btn-link(type='submit') Back
 .row
   .col-lg-12
     %h1.page-header
