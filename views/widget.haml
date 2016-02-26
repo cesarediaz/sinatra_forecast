@@ -1,12 +1,13 @@
 .row
   .col-lg-12
     %h1.page-header
-      City #{@weather.body['city']['name']}
+      #{@weather.body['city']['name']}
       %small= @weather.body['city']['country']
 .row.pull-left
   .col-md-12
     - @weather.body['list'].each do |value|
       - if value['dt'].to_s == @date.to_s
+        %h3= Time.at(value['dt']).strftime("%m/%d/%Y at %I:%M%p")
         %h3= "<small>Rain</small> #{value['weather'][0]['rain']} : #{value['weather'][0]['description']}"
         %h3= "<small>Temperature Average</small> #{value['main']['temp']} <small>Min</small> #{value['main']['temp_min']} <small>Max</small> #{value['main']['temp_max']}"
         %h3= "<small>Pressure</small> #{value['main']['pressure']}"
