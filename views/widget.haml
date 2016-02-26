@@ -4,30 +4,13 @@
       City #{@weather.body['city']['name']}
       %small= @weather.body['city']['country']
 .row.pull-left
-  .col-md-12.portfolio-item
+  .col-md-12
     - @weather.body['list'].each do |value|
       - if value['dt'].to_s == @date.to_s
-        Rain
-        \#{value['weather'][0]['rain']} :
-        \#{value['weather'][0]['description']}
-        %br/
-        Temperature
-        Average
-        \#{value['main']['temp']}
-        Min
-        \#{value['main']['temp_min']}
-        Max
-        \#{value['main']['temp_max']}
-        %br/
-        Pressure
-        \#{value['main']['pressure']}
-        %br/
-        Humidity
-        \#{value['main']['humidity']}
-        %br/
-        Speed
-        \#{value['wind']['speed']}
-        %br/
-        Sys
-        \#{value['sys']['sunrise']}#{value['sys']['sunset']}
+        %h3= "<small>Rain</small> #{value['weather'][0]['rain']} : #{value['weather'][0]['description']}"
+        %h3= "<small>Temperature Average</small> #{value['main']['temp']} <small>Min</small> #{value['main']['temp_min']} <small>Max</small> #{value['main']['temp_max']}"
+        %h3= "<small>Pressure</small> #{value['main']['pressure']}"
+        %h3= "<small>Humidity</small> #{value['main']['humidity']}"
+        %h3= "<small>Speed</small>  #{value['wind']['speed']}"
+        %h3= "<small>Sys</small> #{value['sys']['sunrise']}#{value['sys']['sunset']}"
       %br/
