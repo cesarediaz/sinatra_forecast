@@ -1,13 +1,9 @@
-%form(action='/forecast' method='post' class='form-group')
-  %input(type='hidden' name='city' value="#{@weather.body['city']['name']}")
-  %input(type='hidden' name='country' value="#{@weather.body['city']['country']}")
-  %button.btn.btn-link(type='submit') Back
 .row
   .col-lg-12
     %h1.page-header
       #{@weather.body['city']['name']}
       %small= @weather.body['city']['country']
-.row.pull-left
+.row
   .col-md-12
     - @weather.body['list'].each do |value|
       - if value['dt'].to_s == @date.to_s
@@ -18,4 +14,9 @@
         %h3= "<small>Humidity</small> #{value['main']['humidity']}"
         %h3= "<small>Speed</small>  #{value['wind']['speed']}"
         %h3= "<small>Sys</small> #{value['sys']['sunrise']}#{value['sys']['sunset']}"
-      %br/
+.row
+  .col-lg-12
+    %form(action='/forecast' method='post' class='form-group')
+      %input(type='hidden' name='city' value="#{@weather.body['city']['name']}")
+      %input(type='hidden' name='country' value="#{@weather.body['city']['country']}")
+      %button.btn.btn-link(type='submit') Back
