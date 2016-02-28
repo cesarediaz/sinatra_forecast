@@ -1,12 +1,14 @@
 require 'sinatra'
-require './routes/routes'
-
 require 'yaml'
 require 'open_weather'
-require './config/countries'
 require 'sinatra/activerecord'
-require './models/city.rb'
 require 'geocoder'
+
+require './routes/routes'
+require './config/countries'
+require './lib/request'
+require './lib/open_weather_data'
+require './models/city.rb'
 require './config/initializers/geocoder'
 
 set :title, 'Forecast Weather'
