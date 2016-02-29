@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223204854) do
+ActiveRecord::Schema.define(version: 20160228170901) do
 
   create_table "cities", force: :cascade do |t|
-    t.text   "body"
-    t.string "city_id"
+    t.text     "body"
+    t.string   "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "country_code"
   end
 
   add_index "cities", ["city_id"], name: "index_cities_on_city_id"

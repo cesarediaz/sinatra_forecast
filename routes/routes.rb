@@ -7,8 +7,13 @@ end
 post '/forecast' do
   @country = params['country']
   @city = params['city']
-  @city_weather = OpenWeather::Forecast.city("#{@city}, #{@country}", settings.open_weather_options)
-  City.save(@city_weather)
+
+  if !City.exist?(nil, @city, @country)
+    @city_weather = OpenWeather::Forecast.city("#{@city}, #{@country}", settings.open_weather_options)
+    City.save(@city_weather)
+  else
+    @city_weather = City.where('(name = ? AND country_code = ?)', @city.upcase, @country.upcase).first.body
+  end
   haml :"forecast", locals: { country: @country, city: @city, city_weather: @city_weather }
 end
 
