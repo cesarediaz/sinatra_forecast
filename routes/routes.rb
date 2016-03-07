@@ -22,3 +22,7 @@ get '/widget/:id/:date' do
   @date = params[:date]
   haml :"widget", locals: { weather: @weather, date: @date }
 end
+
+get '/about' do
+  haml :"about"
+end
