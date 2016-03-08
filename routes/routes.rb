@@ -1,6 +1,6 @@
 get '/' do
   @city, @country = Request.new(request).location
-  @city_weather = OpenWeatherData.new(settings, @country, @city)
+  @city_weather = OpenWeather::Forecast.city("#{@city}, #{@country}", settings.open_weather_options)
   haml :"index", locals: { country: @country, city: @city, city_weather: @city_weather }
 end
 
